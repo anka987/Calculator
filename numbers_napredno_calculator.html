@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>JS NUMBERS</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+        <style>
+
+            *{
+                box-sizing: border-box;
+            }
+            button{
+                width: 45px;
+                height: 40px;
+                border:1px solid #000;
+                font-size: 20px;
+                line-height: 38px;
+                vertical-align: top;
+                background: #f0f0f0;
+                margin-bottom: 10px;
+                cursor:pointer;
+                display: inline-block;
+                border-radius: 3px;
+            }
+            input{
+                height: 40px;
+                border:1px solid #000;
+                padding: 0 5px;
+                vertical-align: top;
+                background: #f2f2f2;
+                font-size: 24px;
+                width: 240px;
+                margin-bottom: 10px;
+                color:#000;
+            }
+            .long{
+                width: 95px;
+            }
+            .opp{
+                background: orange;
+                color:#fff;
+            }
+        </style>
+    </head>
+    <body>
+
+       
+
+        
+
+        <h2>KALKULATOR</h2>
+
+        
+        <input type="text" placeholder="0" value="" id="unos" disabled="" style="text-align: right">
+
+        <br>
+        <button onclick="korenuj();">&Sqrt;</button>
+        <button onclick="unesiKarakter('(')">&lpar;</button>
+        <button onclick="unesiKarakter(')')">&rpar;</button>
+        <button onclick="obrisiKarakter();">&lang;-</button>
+        <button onclick="obrisi();">AC</button>
+        
+        
+
+        <br>
+        <button onclick="kvadriraj();">x<sup>2</sup></button>
+        <button onclick="unesiKarakter(7);">7</button>
+        <button onclick="unesiKarakter(8);">8</button>
+        <button onclick="unesiKarakter(9);">9</button>
+        <button class="opp" onclick="unesiKarakter('/');">/</button>
+        <br>
+        <button onclick="cosinus1();">cos</button>
+        <button onclick="unesiKarakter(4);">4</button>
+        <button onclick="unesiKarakter(5);">5</button>
+        <button onclick="unesiKarakter(6);">6</button>
+        <button class="opp" onclick="unesiKarakter('*')">x</button>
+        <br>
+        <button onclick="sinus();">sin</button>
+        <button onclick="unesiKarakter(1);">1</button>
+        <button onclick="unesiKarakter(2);">2</button>
+        <button onclick="unesiKarakter(3);">3</button>
+        <button onclick="unesiKarakter('-')" class="opp">-</button>
+        <br>
+        
+        <button onclick="unesiKarakter(0)" class="long">0</button>
+        <button onclick="unesiKarakter('.')">.</button>
+        <button class="opp" onclick="izracunaj();">=</button>
+        <button onclick="unesiKarakter('+')" class="opp">+</button>
+
+
+
+
+
+
+        <script type="text/javascript">
+
+
+
+            //Napraviti kalkulator
+            //Kalkulator treba da sadrzi brojeve od 0 - 9 koji su button
+            //input za ispisivanje i unos type(text), DISABLED
+            // dugme za resetovanje unosa
+            //dugme za brisanje zadnje unesene vrednosti
+            //dugmice za +, -, *, / , racunanje kvadratnog koren, racunanje kvadrata, sinusa i cosinusa
+
+
+            function pokupiVrednost(){
+                return document.getElementById('unos').value;
+            }
+            
+            function unesiKarakter(karakter){
+                var unos = pokupiVrednost();
+//                var lastEntry = unos.substr(unos.length-1, unos.length);
+//                if(lastEntry === '+' || lastEntry === '-' || lastEntry === '*' || lastEntry === '/'){
+//                    unos = unos.substr(0, unos.length-1);
+//                }
+                unos = unos + karakter;
+                setEntry(unos);
+            }
+            
+            function obrisi(){
+                setEntry(" ");
+            }
+            
+            function obrisiKarakter(){
+                var unos = pokupiVrednost();
+                unos = unos.substr(0, unos.length - 1);
+                setEntry(unos);
+            }
+            
+            function izracunaj(){
+                var unos = pokupiVrednost();
+//                try{
+//                    eval(unos);
+//                }catch(e){
+//                    if(e instanceof  SyntaxError){
+//                        document.getElementById('unos').value = 'ERROR';
+//                    }
+//                }
+                
+                var rezultat = eval(unos);
+                setEntry(rezultat);
+            }
+            
+            
+            function kvadriraj(){
+                var unos = pokupiVrednost();
+                var rezultat = eval(unos);
+                var kvadrat = Math.pow(rezultat, 2);
+                setEntry(kvadrat);
+            }
+
+            function korenuj(){
+                var unos = pokupiVrednost();
+                var rezultat = eval(unos);
+                var koren = Math.sqrt(rezultat);
+                setEntry(koren);
+            }
+            
+            function setEntry(entry){
+                document.getElementById('unos').value = entry;
+            }
+            function sinus (){
+                var unos = pokupiVrednost();
+                var rezultat = eval(unos);
+                var sinus = Math.sin(rezultat * Math.PI / 180);
+                setEntry(sinus);
+            }
+            
+            function cosinus1(){
+                var unos = pokupiVrednost();
+                var rezultat = eval(unos);
+                alert(rezultat);
+                var cosinus = Math.cos(rezultat * Math.PI / 180);
+                setEntry(cosinus);
+            }
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </script>
+    </body>
+</html>
